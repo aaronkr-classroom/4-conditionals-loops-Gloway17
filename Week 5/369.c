@@ -25,12 +25,18 @@ int main() {
 void check369(int num) {
 	for (int i = 1; i <= num; i++) {
 		char num_str[123];
-		itoa_s(i, num_str, 10);
+		int count = 0;
+		_itoa_s(i,num_str, sizeof(num_str), 10);
 		for (int j = 0; num_str[j] != '\0'; j++) {
 			if (num_str[j] == '3' || num_str[j] == '6' || num_str[j] == '9')
-				printf("¦ ");
-			else
-				printf("%d ", i);
+				count++;
+		}
+		if (!count)
+			printf("%d ", i);
+		else {
+			for (int k = 0; k < count; k++)
+				printf("¦");
+			printf(" ");
 		}
 	}
 }
